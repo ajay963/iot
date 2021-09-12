@@ -13,48 +13,60 @@ class Basics extends StatelessWidget {
     final colorList = Provider.of<ColorList>(context);
     final gradientData = Provider.of<GradientDatalist>(context);
     final brightness = Provider.of<LightData>(context);
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Center(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
+    final TextTheme _txtTheme = ThemeData().textTheme;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 40),
+            Text(
+              'Selected Color',
+              style: _txtTheme.headline2,
+            ),
+            const SizedBox(height: 20),
+            Container(
+                height: 60,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.purple.withOpacity(brightness.brightness / 100),
+                  borderRadius: BorderRadius.circular(20),
+                )),
+            const SizedBox(height: 20),
+            Text(
+                '${brightness.getBulbBrightness.toInt().toString()}% Brightness'),
+            Slider(
+              value: brightness.getBulbBrightness,
+              onChanged: (double bright) =>
+                  brightness.setBulbBrightness(bright: bright),
+              min: 0,
+              max: 100,
+            ),
+            const SizedBox(height: 20),
+            Text('Color Palettes', style: _txtTheme.headline2),
+            const SizedBox(height: 20),
+            Wrap(
+              spacing: 1,
+              runSpacing: 1,
               children: [
-                const Text('Selected Color'),
-                const Spacer(flex: 1),
-                Text('${brightness.getBulbBrightness.toString()} Brightness'),
-                Slider(
-                  value: brightness.getBulbBrightness,
-                  onChanged: (double bright) =>
-                      brightness.setBulbBrightness(bright: bright),
-                  min: 0,
-                  max: 100,
-                ),
-                const Spacer(flex: 1),
-                const Text('Color Palettes'),
-                const Spacer(flex: 1),
-                Wrap(
-                  spacing: 1,
-                  runSpacing: 1,
-                  children: [
-                    for (String colorList in colorList.colorList)
-                      ColorBox(colorCode: colorList)
-                  ],
-                ),
-                const Spacer(flex: 2),
-                const Text('Gradients'),
-                const Spacer(flex: 1),
-                for (GradientData gradientList in gradientData.getGradinetData)
-                  GradientBox(
-                      color1: gradientList.color1,
-                      color2: gradientList.color2,
-                      graientName: gradientList.graientName),
-                const Spacer(flex: 2),
+                for (String colorList in colorList.colorList)
+                  ColorBox(colorCode: colorList)
               ],
             ),
-          ),
+            const SizedBox(height: 20),
+            const Text('Gradients'),
+            const SizedBox(height: 20),
+            for (GradientData gradientList in gradientData.getGradinetData)
+              GradientBox(
+                  color1: gradientList.color1,
+                  color2: gradientList.color2,
+                  graientName: gradientList.graientName),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );

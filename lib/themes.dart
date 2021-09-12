@@ -7,9 +7,9 @@ const Color ltGrey = Color(0xffAAAAAA);
 const Color darkBlack = Color(0xff1b1b1b);
 
 class Themeing {
-  static ThemeData theme = ThemeData(
+  static ThemeData appTheme = ThemeData(
       brightness: Brightness.light,
-      primaryColor: darkBlack,
+      // primaryColor: darkBlack,
       splashColor: Colors.white,
       textTheme: TextTheme(
           headline1: GoogleFonts.roboto(
@@ -28,5 +28,12 @@ class Themeing {
             fontSize: 18,
             fontWeight: FontWeight.w400,
             color: ltGrey,
-          )));
+          )),
+      sliderTheme: const SliderThemeData(
+          thumbColor: darkBlack,
+          activeTrackColor: darkBlack,
+          inactiveTickMarkColor: ltGrey,
+          trackHeight: 10,
+          thumbShape: RoundSliderThumbShape(
+              disabledThumbRadius: 20, enabledThumbRadius: 30)));
 }
