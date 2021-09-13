@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 class GradientData {
   String graientName;
-  String color1;
-  String color2;
+  Color color1;
+  Color color2;
   GradientData({
     required this.graientName,
     required this.color1,
@@ -12,11 +13,26 @@ class GradientData {
 }
 
 class GradientDatalist extends ChangeNotifier {
-  List<GradientData> gradDatalist = [];
+  final List<GradientData> _gradDatalist = [
+    GradientData(
+        graientName: 'Green Tea',
+        color1: const Color(0xff23ef32),
+        color2: const Color(0xff55ddff)),
+    GradientData(
+      graientName: 'Evening',
+      color1: const Color(0xffFF21CE),
+      color2: const Color(0xffB04CFF),
+    ),
+    GradientData(
+      graientName: 'Haze Sun',
+      color1: const Color(0xffFF6C6C),
+      color2: const Color(0xffFFD231),
+    ),
+  ];
 
-  List<GradientData> get getGradinetData => gradDatalist;
+  List<GradientData> get getGradinetData => _gradDatalist;
   void addGradinet({required GradientData gradientData}) {
-    gradDatalist.add(gradientData);
+    _gradDatalist.add(gradientData);
     notifyListeners();
   }
 }

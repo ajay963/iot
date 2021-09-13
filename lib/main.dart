@@ -32,8 +32,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme _txtTheme = ThemeData().textTheme;
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Themeing.appTheme,
@@ -42,16 +40,15 @@ class HomeScreen extends StatelessWidget {
         child: Scaffold(
           backgroundColor: const Color(0xff1b1b1b),
           appBar: AppBar(
-            elevation: 0,
-            title: Text('IOT', style: _txtTheme.headline1),
-            backgroundColor: const Color(0xff1b1b1b),
-            bottom: TabBar(
+            title: const Text('IOT'),
+            bottom: const TabBar(
+              labelColor: Colors.transparent,
               // controller: TabController(length: length, vsync: vsync),
-              physics: const BouncingScrollPhysics(),
+              physics: BouncingScrollPhysics(),
               tabs: [
-                Text('Basics', style: _txtTheme.headline3),
-                Text('Advance', style: _txtTheme.headline3),
-                Text('Settings', style: _txtTheme.headline3),
+                Text('Basics'),
+                Text('Advance'),
+                Text('Settings'),
               ],
             ),
           ),
