@@ -37,25 +37,29 @@ class Themeing {
           )),
       appBarTheme: AppBarTheme(
         titleTextStyle: GoogleFonts.roboto(
-            fontSize: 28, fontWeight: FontWeight.w700, color: kTxtWhite),
+            fontSize: 36,
+            fontWeight: FontWeight.w500,
+            letterSpacing: 4,
+            color: kTxtWhite),
         backgroundColor: kDarkBlack,
         elevation: 0,
       ),
       tabBarTheme: TabBarTheme(
-          labelColor: Colors.transparent,
-          indicatorSize: TabBarIndicatorSize.label,
-          labelStyle: TextStyle(
-            fontFamily: GoogleFonts.roboto().fontFamily,
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: kLtGrey,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontFamily: GoogleFonts.roboto().fontFamily,
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: kMdGrey.withOpacity(0.5),
-          )),
+        labelColor: Colors.white,
+        unselectedLabelColor: kMdGrey,
+        labelStyle: TextStyle(
+          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: kLtGrey,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: kMdGrey.withOpacity(0.5),
+        ),
+      ),
       sliderTheme: const SliderThemeData(
           thumbColor: kDarkBlack,
           activeTrackColor: kDarkBlack,

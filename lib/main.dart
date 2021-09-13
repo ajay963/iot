@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iot/provider/gradients.dart';
+import 'package:iot/screens/advance_page.dart';
 import 'package:iot/screens/basic_screen.dart';
 import 'package:iot/themes.dart';
 import 'package:provider/provider.dart';
@@ -40,10 +41,11 @@ class HomeScreen extends StatelessWidget {
         child: Scaffold(
           backgroundColor: const Color(0xff1b1b1b),
           appBar: AppBar(
+            toolbarHeight: 70,
             title: const Text('IOT'),
             bottom: const TabBar(
-              labelColor: Colors.transparent,
-              // controller: TabController(length: length, vsync: vsync),
+              indicatorColor: Colors.transparent,
+              labelPadding: EdgeInsets.symmetric(vertical: 14),
               physics: BouncingScrollPhysics(),
               tabs: [
                 Text('Basics'),
@@ -64,7 +66,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const TabBarView(physics: BouncingScrollPhysics(), children: [
                 Basics(),
-                Icon(Icons.battery_std_outlined, size: 40, color: Colors.grey),
+                AdvancePage(),
                 Icon(Icons.calculate, size: 40, color: Colors.grey)
               ]),
             ],
