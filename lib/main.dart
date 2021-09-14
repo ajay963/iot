@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iot/provider/gradients.dart';
 import 'package:iot/screens/advance_page.dart';
 import 'package:iot/screens/basic_screen.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<LightData>(create: (context) => LightData()),
@@ -56,11 +58,11 @@ class HomeScreen extends StatelessWidget {
           ),
           body: Stack(
             children: [
-              Container(
+              Ink(
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: const Color(0xffefefef),
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),

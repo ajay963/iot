@@ -36,13 +36,12 @@ class Basics extends StatelessWidget {
                 height: 60,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: _brightness.getColor
-                      .withOpacity(_brightness.getBulbBrightness / 100),
+                  color: _brightness.getColor,
                   borderRadius: BorderRadius.circular(20),
                 )),
             const SizedBox(height: 40),
             Text(
-              'Brightness',
+              'Power',
               style: _txtTheme.headline2,
             ),
             const SizedBox(height: 20),
