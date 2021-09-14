@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorBox extends StatelessWidget {
-  final String colorCode;
+  final Color colorCode;
   const ColorBox({
     Key? key,
     required this.colorCode,
@@ -10,19 +10,23 @@ class ColorBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final Size screenSize = MediaQuery.of(context).size;
-    return Ink(
-      height: 50,
-      width: 50,
-      decoration: BoxDecoration(
-          color: Color(int.parse(colorCode)),
-          borderRadius: BorderRadius.circular(20)),
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(20),
+      splashColor: Colors.white.withOpacity(0.5),
+      child: Ink(
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+            color: colorCode, borderRadius: BorderRadius.circular(20)),
+      ),
     );
   }
 }
 
 class GradientBox extends StatelessWidget {
-  final String color1;
-  final String color2;
+  final Color color1;
+  final Color color2;
   final String graientName;
   const GradientBox({
     Key? key,
@@ -33,20 +37,29 @@ class GradientBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
+    // final Size screenSize = MediaQuery.of(context).size;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(graientName),
-        const SizedBox(height: 20),
-        Ink(
-          height: screenSize.width * 0.3,
-          width: screenSize.width * 0.8,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                  colors: [Color(int.parse(color1)), Color(int.parse(color2))],
-                  begin: Alignment.topLeft,
-                  end: Alignment.topRight)),
+        Text(graientName,
+            textAlign: TextAlign.left,
+            style: Theme.of(context).textTheme.bodyText1),
+        const SizedBox(height: 10),
+        InkWell(
+          onTap: () {},
+          borderRadius: BorderRadius.circular(10),
+          splashColor: Colors.white.withOpacity(0.5),
+          child: Ink(
+            height: 40,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                gradient: LinearGradient(
+                    colors: [color1, color2],
+                    begin: Alignment.topLeft,
+                    end: Alignment.topRight)),
+          ),
         ),
       ],
     );
