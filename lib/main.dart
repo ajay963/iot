@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:iot/provider/gradients.dart';
 import 'package:iot/screens/advance_page.dart';
 import 'package:iot/screens/basic_screen.dart';
+import 'package:iot/screens/settings.dart';
 import 'package:iot/themes.dart';
 import 'package:provider/provider.dart';
 import 'package:iot/provider/colors_list.dart';
@@ -66,11 +67,9 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              const TabBarView(physics: BouncingScrollPhysics(), children: [
-                Basics(),
-                AdvancePage(),
-                Icon(Icons.calculate, size: 40, color: Colors.grey)
-              ]),
+              const TabBarView(
+                  physics: BouncingScrollPhysics(),
+                  children: [Basics(), AdvancePage(), SettingPage()]),
             ],
           ),
         ),
@@ -78,3 +77,25 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+//authentication flow 
+
+
+//  home: StreamBuilder<User>(
+//               stream: FirebaseAuth.instance.authStateChanges(),
+//               builder: (context, snapshot) {
+//                 if (snapshot.connectionState == ConnectionState.active) {
+//                   User user = snapshot.data;
+//                   if (user != null) {
+//                     return Indicator(
+//                       authUser: user,
+//                     );
+//                   }
+//                   return LoginPage();
+//                 }
+//                 return Center(
+//                   child: CircularProgressIndicator(),
+//                 );
+//               }),
