@@ -58,14 +58,12 @@ class AdvancePage extends StatelessWidget {
                     onTap: () async {
                       Clipboard.setData(
                           ClipboardData(text: _colorData.getColorInString));
-                      SnackBar(
-                          backgroundColor: Colors.black,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 5),
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          backgroundColor: Colors.black38,
                           content: Text(
-                            'Color Copied to clipboard',
+                            'ColorCode Copied',
                             style: _textThemeData.bodyText1,
-                          ));
+                          )));
                     },
                     child: const Icon(
                       Icons.copy,

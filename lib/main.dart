@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const TabBarView(
                   physics: BouncingScrollPhysics(),
-                  children: [Basics(), AdvancePage(), SettingPage()]),
+                  children: [BasicsPage(), AdvancePage(), SettingPage()]),
             ],
           ),
         ),

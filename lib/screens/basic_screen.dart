@@ -8,8 +8,8 @@ import 'package:iot/widgets/boxes.dart';
 import 'package:provider/provider.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-class Basics extends StatelessWidget {
-  const Basics({Key? key}) : super(key: key);
+class BasicsPage extends StatelessWidget {
+  const BasicsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
