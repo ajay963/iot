@@ -32,7 +32,10 @@ class AdvancePage extends StatelessWidget {
                 height: 60,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: _colorData.getColor,
+                  gradient: LinearGradient(
+                      colors: [_colorData.getColor1, _colorData.getColor2],
+                      begin: Alignment.topLeft,
+                      end: Alignment.topRight),
                   borderRadius: BorderRadius.circular(20),
                 )),
             const SizedBox(height: 20),
@@ -84,9 +87,9 @@ class AdvancePage extends StatelessWidget {
             Text('Color Wheel', style: _textThemeData.headline2),
             const SizedBox(height: 20),
             ColorPicker(
-              color: _colorData.getColor,
+              color: _colorData.getColor1,
               onColorChanged: (Color color) =>
-                  _colorData.setColor(colorData: color),
+                  _colorData.setColor1(colorData: color),
               onColorChangeEnd: (Color color) =>
                   _colorData.addRecentColor(colorData: color),
               wheelDiameter: MediaQuery.of(context).size.width * 0.8,
@@ -112,7 +115,14 @@ class AdvancePage extends StatelessWidget {
               ),
               itemCount: _colorData.getRecentColor.length,
               itemBuilder: (BuildContext context, int index) {
-                return ColorBox(colorCode: _colorData.getRecentColor[index]);
+                return ColorBox(
+                    onTap: () {
+                      _colorData.setColor1(
+                          colorData: _colorData.getRecentColor[index]);
+                      _colorData.setColor2(
+                          colorData: _colorData.getRecentColor[index]);
+                    },
+                    colorCode: _colorData.getRecentColor[index]);
               },
             ),
             const SizedBox(height: 40)

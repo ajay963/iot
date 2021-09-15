@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 
 class LightData extends ChangeNotifier {
   double _brightness = 100;
-  Color _colorData = const Color(0xff00ffe0);
+  Color _colorData1 = const Color(0xff00ffe0);
+  Color _colorData2 = const Color(0xff00ffe0);
+
   final List<Color> _recentColorsList = [const Color(0xff00ffe0)];
 
   double get getBulbBrightness => _brightness;
-  Color get getColor => _colorData;
-  String get getColorInString => _colorData
+  Color get getColor1 => _colorData1;
+  Color get getColor2 => _colorData2;
+  String get getColorInString => _colorData1
       .toString()
       .replaceAll('Color(0xff', '#')
       .replaceAll(')', '')
@@ -20,8 +23,13 @@ class LightData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setColor({required Color colorData}) {
-    _colorData = colorData;
+  void setColor1({required Color colorData}) {
+    _colorData1 = colorData;
+    notifyListeners();
+  }
+
+  void setColor2({required Color colorData}) {
+    _colorData2 = colorData;
     notifyListeners();
   }
 

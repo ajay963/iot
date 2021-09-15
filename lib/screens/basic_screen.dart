@@ -13,8 +13,8 @@ class BasicsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorList = Provider.of<ColorList>(context);
-    final gradientData = Provider.of<GradientDatalist>(context);
+    final _colorList = Provider.of<ColorList>(context);
+    final _gradientData = Provider.of<GradientDatalist>(context);
     final _brightness = Provider.of<LightData>(context);
     final TextTheme _txtTheme = Theme.of(context).textTheme;
 
@@ -36,7 +36,10 @@ class BasicsPage extends StatelessWidget {
                 height: 60,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: _brightness.getColor,
+                  gradient: LinearGradient(
+                      colors: [_brightness.getColor1, _brightness.getColor2],
+                      begin: Alignment.topLeft,
+                      end: Alignment.topRight),
                   borderRadius: BorderRadius.circular(20),
                 )),
             const SizedBox(height: 40),
@@ -63,9 +66,16 @@ class BasicsPage extends StatelessWidget {
                     crossAxisSpacing: 20,
                     crossAxisCount: 5,
                   ),
-                  itemCount: colorList.colorList.length,
+                  itemCount: _colorList.colorList.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ColorBox(colorCode: colorList.colorList[index]);
+                    return ColorBox(
+                        onTap: () {
+                          _brightness.setColor1(
+                              colorData: _colorList.colorList[index]);
+                          _brightness.setColor2(
+                              colorData: _colorList.colorList[index]);
+                        },
+                        colorCode: _colorList.colorList[index]);
                   },
                 ),
               ],
@@ -80,13 +90,21 @@ class BasicsPage extends StatelessWidget {
               shrinkWrap: true,
               itemExtent: 90,
               physics: const BouncingScrollPhysics(),
-              itemCount: gradientData.getGradinetData.length,
+              itemCount: _gradientData.getGradinetData.length,
               itemBuilder: (BuildContext context, int index) {
                 return GradientBox(
-                    color1: gradientData.getGradinetData[index].color1,
-                    color2: gradientData.getGradinetData[index].color2,
+                    onTap: () {
+                      _brightness.setColor1(
+                          colorData:
+                              _gradientData.getGradinetData[index].color1);
+                      _brightness.setColor2(
+                          colorData:
+                              _gradientData.getGradinetData[index].color2);
+                    },
+                    color1: _gradientData.getGradinetData[index].color1,
+                    color2: _gradientData.getGradinetData[index].color2,
                     graientName:
-                        gradientData.getGradinetData[index].graientName);
+                        _gradientData.getGradinetData[index].graientName);
               },
             ),
             const SizedBox(height: 20),
@@ -110,12 +128,12 @@ class CircularSlider extends StatelessWidget {
       max: 100,
       appearance: CircularSliderAppearance(
           size: MediaQuery.of(context).size.width * 0.7,
-          startAngle: 110,
-          angleRange: 320,
+          startAngle: 90,
+          angleRange: 260,
           infoProperties: InfoProperties(
               mainLabelStyle: TextStyle(
                   fontFamily: GoogleFonts.roboto().fontFamily,
-                  fontSize: 56,
+                  fontSize: 42,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xff666666))),
           customWidths: CustomSliderWidths(progressBarWidth: 20),
@@ -123,9 +141,12 @@ class CircularSlider extends StatelessWidget {
               shadowColor: Colors.transparent,
               hideShadow: true,
               trackColor: const Color(0xffaAaAaA),
+              gradientStartAngle: 90,
+              gradientEndAngle: 360,
               progressBarColors: [
-                const Color(0xff1b1b1b),
-                const Color(0xffaAaAaA),
+                const Color(0xff00FF00),
+                const Color(0xffFFFF00),
+                const Color(0xffFF0000),
               ])),
     );
   }
