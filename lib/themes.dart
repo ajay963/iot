@@ -10,7 +10,7 @@ class Themeing {
   static ThemeData appTheme = ThemeData(
       // brightness: Brightness.light,
       // primaryColor: darkBlack,
-      splashColor: Colors.white,
+      // splashColor: Colors.white,
       textTheme: TextTheme(
           headline1: TextStyle(
               fontFamily: GoogleFonts.roboto().fontFamily,
@@ -46,7 +46,7 @@ class Themeing {
       ),
       tabBarTheme: TabBarTheme(
         labelColor: Colors.white,
-        unselectedLabelColor: kMdGrey,
+        unselectedLabelColor: kMdGrey.withOpacity(0.5),
         labelStyle: TextStyle(
           fontFamily: GoogleFonts.roboto().fontFamily,
           fontSize: 20,

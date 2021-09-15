@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 
 class ColorBox extends StatelessWidget {
   final Color colorCode;
+  final Function() onTap;
   const ColorBox({
     Key? key,
     required this.colorCode,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // final Size screenSize = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       borderRadius: BorderRadius.circular(20),
       splashColor: Colors.white.withOpacity(0.5),
       child: Ink(
@@ -28,11 +30,13 @@ class GradientBox extends StatelessWidget {
   final Color color1;
   final Color color2;
   final String graientName;
+  final Function() onTap;
   const GradientBox({
     Key? key,
     required this.color1,
     required this.color2,
     required this.graientName,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -47,7 +51,7 @@ class GradientBox extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyText1),
         const SizedBox(height: 10),
         InkWell(
-          onTap: () {},
+          onTap: onTap,
           borderRadius: BorderRadius.circular(10),
           splashColor: Colors.white.withOpacity(0.5),
           child: Ink(
