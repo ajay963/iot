@@ -48,7 +48,7 @@ class BasicsPage extends StatelessWidget {
             const Center(
               child: CircularSlider(),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
             Text('Color Palettes', style: _txtTheme.headline2),
             const SizedBox(height: 20),
             Wrap(
@@ -70,7 +70,7 @@ class BasicsPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
             Text(
               'Gradients',
               style: _txtTheme.headline2,

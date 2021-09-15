@@ -51,9 +51,18 @@ class HomeScreen extends StatelessWidget {
               labelPadding: EdgeInsets.symmetric(vertical: 14),
               physics: BouncingScrollPhysics(),
               tabs: [
-                Text('Basics'),
-                Text('Advance'),
-                Text('Settings'),
+                Padding(
+                  padding: EdgeInsets.only(right: 30),
+                  child: Text('Basics', textAlign: TextAlign.left),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 16),
+                  child: Text('Advance'),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text('Settings'),
+                ),
               ],
             ),
           ),
