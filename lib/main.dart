@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iot/provider/gradients.dart';
+import 'package:iot/provider/network.dart';
 import 'package:iot/screens/advance_page.dart';
 import 'package:iot/screens/basic_screen.dart';
 import 'package:iot/screens/settings.dart';
 import 'package:iot/themes.dart';
+import 'package:iot/widgets/network.dart';
 import 'package:provider/provider.dart';
 import 'package:iot/provider/colors_list.dart';
 import 'package:iot/provider/light_data.dart';
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<LightData>(create: (context) => LightData()),
+        ChangeNotifierProvider<InternetCheckerClass>(
+            create: (context) => InternetCheckerClass()),
         ChangeNotifierProvider<ColorList>(create: (context) => ColorList()),
         ChangeNotifierProvider<GradientDatalist>(
             create: (context) => GradientDatalist())
@@ -68,6 +72,7 @@ class HomeScreen extends StatelessWidget {
           ),
           body: Stack(
             children: [
+              const InternetChecker(),
               Ink(
                 height: double.infinity,
                 width: double.infinity,

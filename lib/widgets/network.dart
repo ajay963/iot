@@ -1,24 +1,26 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+
 import 'package:iot/provider/network.dart';
+import 'package:provider/provider.dart';
 
 class InternetChecker extends StatefulWidget {
-  const InternetChecker({Key? key}) : super(key: key);
+  const InternetChecker({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _InternetCheckerState createState() => _InternetCheckerState();
 }
 
 class _InternetCheckerState extends State<InternetChecker> {
-  bool _hasInernet = false;
-  ConnectivityResult _networkType = ConnectivityResult.none;
+  late bool _hasInernet = false;
+  late ConnectivityResult _networkType = ConnectivityResult.none;
   late StreamSubscription _internetSubscriptions;
   late StreamSubscription _networkSubscriptions;
-
-  final _networkData = NetworkData();
 
   @override
   void initState() {
@@ -37,6 +39,12 @@ class _InternetCheckerState extends State<InternetChecker> {
         InternetConnectionChecker().onStatusChange.listen((event) {
       setState(() {
         _hasInernet = (event == InternetConnectionStatus.connected);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: (_hasInernet == true) ? Colors.green : Colors.red,
+            padding: const EdgeInsets.all(10),
+            content: Text((_hasInernet == true) ? 'Online' : 'Offline',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyText2)));
       });
     });
   }
@@ -50,28 +58,9 @@ class _InternetCheckerState extends State<InternetChecker> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        (_hasInernet == true)
-            ? Text(
-                'Connected to Internet',
-                style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    fontSize: 18,
-                    color: Colors.green),
-              )
-            : Text(
-                'No Internet',
-                style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    fontSize: 18,
-                    color: Colors.red),
-              ),
-        const SizedBox(height: 5),
-        Text(_networkData.networkData(networkResult: _networkType),
-            style: Theme.of(context).textTheme.bodyText1)
-      ],
-    );
+    final _networkData = Provider.of<InternetCheckerClass>(context);
+    _networkData.setInternetStatus(_hasInernet);
+    _networkData.setNetworkType(_networkType);
+    return const SizedBox();
   }
 }

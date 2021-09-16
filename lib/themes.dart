@@ -34,6 +34,12 @@ class Themeing {
             fontSize: 18,
             fontWeight: FontWeight.w400,
             color: kLtGrey,
+          ),
+          bodyText2: TextStyle(
+            fontFamily: GoogleFonts.roboto().fontFamily,
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+            color: Colors.white,
           )),
       appBarTheme: AppBarTheme(
         titleTextStyle: GoogleFonts.roboto(

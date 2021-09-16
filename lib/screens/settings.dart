@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iot/widgets/network.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iot/provider/network.dart';
+import 'package:provider/provider.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -20,7 +22,7 @@ class SettingPage extends StatelessWidget {
               style: _txtTheme.headline2,
             ),
             const SizedBox(height: 10),
-            const InternetChecker(),
+            const NetworkWidget(),
             const SizedBox(height: 10),
             const Divider(thickness: 2),
             const SizedBox(height: 10),
@@ -32,6 +34,41 @@ class SettingPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class NetworkWidget extends StatelessWidget {
+  const NetworkWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _netChecker = Provider.of<InternetCheckerClass>(context);
+    final _networkSet = NetworkData();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        (_netChecker.getInternetStatua == true)
+            ? Text(
+                'Connected to Internet',
+                style: TextStyle(
+                    fontFamily: GoogleFonts.roboto().fontFamily,
+                    fontSize: 18,
+                    color: Colors.green),
+              )
+            : Text(
+                'No Internet',
+                style: TextStyle(
+                    fontFamily: GoogleFonts.roboto().fontFamily,
+                    fontSize: 18,
+                    color: Colors.red),
+              ),
+        const SizedBox(height: 5),
+        Text(_networkSet.networkData(networkResult: _netChecker.getNetworkType),
+            style: Theme.of(context).textTheme.bodyText1)
+      ],
     );
   }
 }
