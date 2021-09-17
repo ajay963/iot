@@ -1,10 +1,18 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iot/provider/network.dart';
 import 'package:provider/provider.dart';
 
+import 'package:iot/provider/network.dart';
+
 class SettingPage extends StatelessWidget {
-  const SettingPage({Key? key}) : super(key: key);
+  final bool hasInternet;
+  final ConnectivityResult connectivityResult;
+  const SettingPage({
+    Key? key,
+    required this.hasInternet,
+    required this.connectivityResult,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +25,21 @@ class SettingPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 40),
+            Text('Connectivtity', style: _txtTheme.headline2),
+            const SizedBox(height: 10),
             Text(
-              'Connectivity',
-              style: _txtTheme.headline2,
+              (hasInternet == true) ? 'Online' : 'No Internet',
+              style: TextStyle(
+                  fontFamily: _txtTheme.bodyText1!.fontFamily,
+                  fontSize: _txtTheme.bodyText1!.fontSize,
+                  color: (hasInternet == true) ? Colors.green : Colors.red,
+                  fontWeight: _txtTheme.bodyText1!.fontWeight),
             ),
             const SizedBox(height: 10),
-            const NetworkWidget(),
+            Text(
+              NetworkData().networkData(networkResult: connectivityResult),
+              style: _txtTheme.bodyText1,
+            ),
             const SizedBox(height: 10),
             const Divider(thickness: 2),
             const SizedBox(height: 10),
@@ -34,41 +51,6 @@ class SettingPage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class NetworkWidget extends StatelessWidget {
-  const NetworkWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final _netChecker = Provider.of<InternetCheckerClass>(context);
-    final _networkSet = NetworkData();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        (_netChecker.getInternetStatua == true)
-            ? Text(
-                'Connected to Internet',
-                style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    fontSize: 18,
-                    color: Colors.green),
-              )
-            : Text(
-                'No Internet',
-                style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    fontSize: 18,
-                    color: Colors.red),
-              ),
-        const SizedBox(height: 5),
-        Text(_networkSet.networkData(networkResult: _netChecker.getNetworkType),
-            style: Theme.of(context).textTheme.bodyText1)
-      ],
     );
   }
 }

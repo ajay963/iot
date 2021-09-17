@@ -11,6 +11,7 @@ class Themeing {
       // brightness: Brightness.light,
       // primaryColor: darkBlack,
       // splashColor: Colors.white,
+      backgroundColor: kTxtWhite,
       textTheme: TextTheme(
           headline1: TextStyle(
               fontFamily: GoogleFonts.roboto().fontFamily,
