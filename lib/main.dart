@@ -1,13 +1,17 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import 'package:iot/provider/colors_list.dart';
 import 'package:iot/provider/gradients.dart';
+import 'package:iot/provider/light_data.dart';
+import 'package:iot/provider/network.dart';
 import 'package:iot/screens/advance_page.dart';
 import 'package:iot/screens/basic_screen.dart';
 import 'package:iot/screens/settings.dart';
 import 'package:iot/themes.dart';
-import 'package:provider/provider.dart';
-import 'package:iot/provider/colors_list.dart';
-import 'package:iot/provider/light_data.dart';
+import 'package:iot/widgets/network_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,17 +26,25 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<LightData>(create: (context) => LightData()),
+        ChangeNotifierProvider<InternetCheckerClass>(
+            create: (context) => InternetCheckerClass()),
         ChangeNotifierProvider<ColorList>(create: (context) => ColorList()),
         ChangeNotifierProvider<GradientDatalist>(
             create: (context) => GradientDatalist())
       ],
-      child: const HomeScreen(),
+      child: const InternetChecker(),
     );
   }
 }
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final bool hasInternet;
+  final ConnectivityResult connectivityResult;
+  const HomeScreen({
+    Key? key,
+    required this.hasInternet,
+    required this.connectivityResult,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +54,6 @@ class HomeScreen extends StatelessWidget {
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
-          backgroundColor: const Color(0xff1b1b1b),
           appBar: AppBar(
             toolbarHeight: 70,
             title: const Text('IOT'),
@@ -76,9 +87,14 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              const TabBarView(
-                  physics: BouncingScrollPhysics(),
-                  children: [BasicsPage(), AdvancePage(), SettingPage()]),
+              TabBarView(physics: const BouncingScrollPhysics(), children: [
+                const BasicsPage(),
+                const AdvancePage(),
+                SettingPage(
+                  hasInternet: hasInternet,
+                  connectivityResult: connectivityResult,
+                )
+              ]),
             ],
           ),
         ),
@@ -86,6 +102,21 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
