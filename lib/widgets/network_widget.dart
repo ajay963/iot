@@ -1,14 +1,14 @@
 import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+
 import 'package:iot/main.dart';
 import 'package:iot/themes.dart';
 
 class InternetChecker extends StatefulWidget {
-  const InternetChecker({
-    Key? key,
-  }) : super(key: key);
+  const InternetChecker({Key? key, fg}) : super(key: key);
 
   @override
   _InternetCheckerState createState() => _InternetCheckerState();
@@ -64,23 +64,33 @@ class _InternetCheckerState extends State<InternetChecker> {
             hasInternet: _hasInernet,
             connectivityResult: _networkType,
           )
-        : const NoNetScreen();
+        : NoNetScreen();
   }
 }
 
 class NoNetScreen extends StatelessWidget {
-  const NoNetScreen({Key? key}) : super(key: key);
+  final TextTheme _txtTheme = Themeing.appTheme.textTheme;
+  NoNetScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _txtTheme = Theme.of(context).textTheme;
-    return MaterialApp(
-      theme: Themeing.appTheme,
-      home: Scaffold(
-        body: Center(
-          child: Text('No Internet Connection', style: _txtTheme.headline2),
-        ),
-      ),
+    return Material(
+      color: Colors.white,
+      child: Center(
+          child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: RichText(
+            text: TextSpan(children: [
+          TextSpan(
+              text: '404\n\n',
+              style: TextStyle(
+                fontFamily: _txtTheme.headline2!.fontFamily,
+                fontSize: 36,
+                color: Colors.grey,
+              )),
+          TextSpan(text: 'No Internet Connection', style: _txtTheme.headline2),
+        ])),
+      )),
     );
   }
 }

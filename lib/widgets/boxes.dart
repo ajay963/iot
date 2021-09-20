@@ -20,7 +20,7 @@ class ColorBox extends StatelessWidget {
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            color: colorCode, borderRadius: BorderRadius.circular(20)),
+            color: colorCode, borderRadius: BorderRadius.circular(30)),
       ),
     );
   }
@@ -42,30 +42,21 @@ class GradientBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final Size screenSize = MediaQuery.of(context).size;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(graientName,
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.bodyText1),
-        const SizedBox(height: 10),
-        InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(10),
-          splashColor: Colors.white.withOpacity(0.5),
-          child: Ink(
-            height: 40,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
-                    colors: [color1, color2],
-                    begin: Alignment.topLeft,
-                    end: Alignment.topRight)),
-          ),
-        ),
-      ],
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10),
+      splashColor: Colors.white.withOpacity(0.5),
+      child: Ink(
+        height: 70,
+        width: 70,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            gradient: RadialGradient(
+                colors: [color1, color2],
+                radius: 1,
+                focal: Alignment.topLeft,
+                center: Alignment.topRight)),
+      ),
     );
   }
 }

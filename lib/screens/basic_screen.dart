@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iot/provider/colors_list.dart';
 import 'package:iot/provider/gradients.dart';
 import 'package:iot/provider/light_data.dart';
 import 'package:iot/widgets/boxes.dart';
@@ -13,7 +13,7 @@ class BasicsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _colorList = Provider.of<ColorList>(context);
+    // final _colorList = Provider.of<ColorList>(context);
     final _gradientData = Provider.of<GradientDatalist>(context);
     final _brightness = Provider.of<LightData>(context);
     final TextTheme _txtTheme = Theme.of(context).textTheme;
@@ -32,27 +32,76 @@ class BasicsPage extends StatelessWidget {
               style: _txtTheme.headline2,
             ),
             const SizedBox(height: 20),
-            Container(
-                height: 60,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [_brightness.getColor1, _brightness.getColor2],
-                      begin: Alignment.topLeft,
-                      end: Alignment.topRight),
-                  borderRadius: BorderRadius.circular(20),
-                )),
+            Row(
+              children: [
+                Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                        _brightness.getColor1,
+                        _brightness.getColor2
+                      ], begin: Alignment.topLeft, end: Alignment.topRight),
+                      borderRadius: BorderRadius.circular(40),
+                    )),
+                const SizedBox(width: 40),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('HEXcode', style: _txtTheme.bodyText1),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(_brightness.getColorInString,
+                            style: TextStyle(
+                                fontFamily: GoogleFonts.roboto().fontFamily,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w800,
+                                color: const Color(0xff343434))),
+                        const SizedBox(width: 20),
+                        Ink(
+                          height: 50,
+                          width: 50,
+                          child: InkWell(
+                            splashColor: Colors.black.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(20),
+                            onTap: () async {
+                              Clipboard.setData(ClipboardData(
+                                  text: _brightness.getColorInString));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                      backgroundColor: Colors.black38,
+                                      content: Text(
+                                        'ColorCode Copied',
+                                        style: _txtTheme.bodyText1,
+                                      )));
+                            },
+                            child: const Icon(
+                              Icons.copy,
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xffcccccc),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
             const SizedBox(height: 40),
             Text(
-              'Power',
+              'Color Wheel',
               style: _txtTheme.headline2,
             ),
             const SizedBox(height: 20),
-            const Center(
-              child: CircularSlider(),
-            ),
             const SizedBox(height: 40),
-            Text('Color Palettes', style: _txtTheme.headline2),
+            Text('Recent Colors', style: _txtTheme.headline2),
             const SizedBox(height: 20),
             Wrap(
               spacing: 1,
@@ -66,16 +115,16 @@ class BasicsPage extends StatelessWidget {
                     crossAxisSpacing: 20,
                     crossAxisCount: 5,
                   ),
-                  itemCount: _colorList.colorList.length,
+                  itemCount: _brightness.getRecentColor.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ColorBox(
                         onTap: () {
                           _brightness.setColor1(
-                              colorData: _colorList.colorList[index]);
+                              colorData: _brightness.getRecentColor[index]);
                           _brightness.setColor2(
-                              colorData: _colorList.colorList[index]);
+                              colorData: _brightness.getRecentColor[index]);
                         },
-                        colorCode: _colorList.colorList[index]);
+                        colorCode: _brightness.getRecentColor[index]);
                   },
                 ),
               ],
@@ -86,9 +135,10 @@ class BasicsPage extends StatelessWidget {
               style: _txtTheme.headline2,
             ),
             const SizedBox(height: 20),
-            ListView.builder(
+            GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 20, crossAxisSpacing: 20, crossAxisCount: 4),
               shrinkWrap: true,
-              itemExtent: 90,
               physics: const BouncingScrollPhysics(),
               itemCount: _gradientData.getGradinetData.length,
               itemBuilder: (BuildContext context, int index) {
@@ -108,6 +158,23 @@ class BasicsPage extends StatelessWidget {
               },
             ),
             const SizedBox(height: 20),
+            Text('Favourite Color', style: _txtTheme.headline2),
+            const SizedBox(height: 20),
+            GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                crossAxisCount: 5,
+              ),
+              itemCount: _brightness.getFavColor.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ColorBox(
+                    colorCode: _brightness.getFavColor[index],
+                    onTap: () => _brightness.setColor1(
+                        colorData: _brightness.getFavColor[index]));
+              },
+            ),
           ],
         ),
       ),

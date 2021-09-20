@@ -8,6 +8,7 @@ class LightData extends ChangeNotifier {
   Color _colorData2 = const Color(0xff00ffe0);
 
   final List<Color> _recentColorsList = [const Color(0xff00ffe0)];
+  final List<Color> _favColorsList = [const Color(0xff00ffe0)];
 
   double get getBulbBrightness => _brightness;
   Color get getColor1 => _colorData1;
@@ -18,6 +19,7 @@ class LightData extends ChangeNotifier {
       .replaceAll(')', '')
       .toUpperCase();
   List<Color> get getRecentColor => _recentColorsList;
+  List<Color> get getFavColor => _favColorsList;
   void setBulbBrightness({required double bright}) {
     _brightness = bright;
     notifyListeners();
@@ -34,6 +36,11 @@ class LightData extends ChangeNotifier {
   }
 
   void addRecentColor({required Color colorData}) {
+    _recentColorsList.insert(0, colorData);
+    notifyListeners();
+  }
+
+  void addFavColor({required Color colorData}) {
     _recentColorsList.insert(0, colorData);
     notifyListeners();
   }

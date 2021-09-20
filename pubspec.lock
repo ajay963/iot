@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  color_picker_field:
+    dependency: "direct main"
+    description:
+      name: color_picker_field
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0+1"
   connectivity_plus:
     dependency: "direct main"
     description:
