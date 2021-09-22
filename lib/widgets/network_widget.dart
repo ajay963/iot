@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import 'package:iot/main.dart';
@@ -79,17 +80,34 @@ class NoNetScreen extends StatelessWidget {
       child: Center(
           child: Directionality(
         textDirection: TextDirection.ltr,
-        child: RichText(
-            text: TextSpan(children: [
-          TextSpan(
-              text: '404\n\n',
-              style: TextStyle(
-                fontFamily: _txtTheme.headline2!.fontFamily,
-                fontSize: 36,
-                color: Colors.grey,
-              )),
-          TextSpan(text: 'No Internet Connection', style: _txtTheme.headline2),
-        ])),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 60),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(FontAwesomeIcons.mixcloud,
+                    size: 60, color: Colors.red.shade400),
+                // const SizedBox(height: 200),
+                RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: 'No Internet Connection\n\n',
+                      style: TextStyle(
+                        fontFamily: _txtTheme.headline2!.fontFamily,
+                        fontSize: 36,
+                        color: Colors.grey,
+                      )),
+                  TextSpan(
+                      text:
+                          'go to detttings ->network ->data check for internet connection',
+                      style: _txtTheme.bodyText1),
+                ])),
+              ],
+            ),
+          ),
+        ),
       )),
     );
   }

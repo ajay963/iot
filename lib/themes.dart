@@ -11,11 +11,11 @@ class Themeing {
       // brightness: Brightness.light,
       // primaryColor: darkBlack,
       // splashColor: Colors.white,
-      backgroundColor: kTxtWhite,
+      // backgroundColor: kTxtWhite,
       textTheme: TextTheme(
           headline1: TextStyle(
               fontFamily: GoogleFonts.roboto().fontFamily,
-              fontSize: 28,
+              fontSize: 24,
               fontWeight: FontWeight.w700,
               color: kTxtWhite),
           headline2: TextStyle(
@@ -48,7 +48,7 @@ class Themeing {
             fontWeight: FontWeight.w500,
             letterSpacing: 4,
             color: kTxtWhite),
-        backgroundColor: kDarkBlack,
+        backgroundColor: const Color(0xffefefef),
         elevation: 0,
       ),
       tabBarTheme: TabBarTheme(

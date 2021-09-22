@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:iot/provider/colors_list.dart';
 import 'package:iot/provider/gradients.dart';
@@ -47,44 +48,33 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme _txtThenme = Theme.of(context).textTheme;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Themeing.appTheme,
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
-          // appBar: AppBar(
-          //   toolbarHeight: 70,
-          //   title: const Text('IOT'),
-          //   bottom: const TabBar(
-          //     indicatorColor: Colors.transparent,
-          //     labelPadding: EdgeInsets.symmetric(vertical: 14),
-          //     physics: BouncingScrollPhysics(),
-          //     tabs: [
-          //       Padding(
-          //         padding: EdgeInsets.only(right: 30),
-          //         child: Text('Basics', textAlign: TextAlign.left),
-          //       ),
-          //       Padding(
-          //         padding: EdgeInsets.only(right: 16),
-          //         child: Text('Advance'),
-          //       ),
-          //       Padding(
-          //         padding: EdgeInsets.only(left: 10),
-          //         child: Text('Settings'),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          appBar: AppBar(
+              title: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                // const SizedBox(width: 20),
+                Text(
+                  'IOT',
+                  style: _txtThenme.headline3,
+                )
+              ])),
           body: SafeArea(
             child: Stack(
               children: [
                 Ink(
                   height: double.infinity,
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffefefef),
-                    borderRadius: BorderRadius.circular(20),
+                  decoration: const BoxDecoration(
+                    color: Color(0xffefefef),
+                    // borderRadius: BorderRadius.circular(20),
                   ),
                 ),
                 TabBarView(physics: const BouncingScrollPhysics(), children: [

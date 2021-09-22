@@ -1,3 +1,4 @@
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iot/provider/gradients.dart';
 import 'package:iot/provider/light_data.dart';
 import 'package:iot/widgets/boxes.dart';
+import 'package:iot/widgets/buttos.dart';
 import 'package:provider/provider.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class BasicsPage extends StatelessWidget {
   const BasicsPage({Key? key}) : super(key: key);
@@ -94,13 +95,34 @@ class BasicsPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
+            CustomRoudedButto(text: 'Add to fav', onTap: () {}),
             const SizedBox(height: 40),
             Text(
               'Color Wheel',
               style: _txtTheme.headline2,
             ),
+            Center(
+              child: ColorPicker(
+                color: _brightness.getColor1,
+                onColorChanged: (Color color) {
+                  _brightness.setColor1(colorData: color);
+                  _brightness.setColor2(colorData: color);
+                },
+                onColorChangeEnd: (Color color) =>
+                    _brightness.addRecentColor(colorData: color),
+                wheelDiameter: MediaQuery.of(context).size.width * 0.6,
+                wheelWidth: 30,
+                borderRadius: 10,
+                enableShadesSelection: false,
+                pickersEnabled: const <ColorPickerType, bool>{
+                  ColorPickerType.wheel: true,
+                  ColorPickerType.accent: false,
+                  ColorPickerType.primary: false
+                },
+              ),
+            ),
             const SizedBox(height: 20),
-            const SizedBox(height: 40),
             Text('Recent Colors', style: _txtTheme.headline2),
             const SizedBox(height: 20),
             Wrap(
@@ -158,6 +180,8 @@ class BasicsPage extends StatelessWidget {
               },
             ),
             const SizedBox(height: 20),
+            CustomRoudedButto(text: 'Add Gradients', onTap: () {}),
+            const SizedBox(height: 20),
             Text('Favourite Color', style: _txtTheme.headline2),
             const SizedBox(height: 20),
             GridView.builder(
@@ -175,46 +199,10 @@ class BasicsPage extends StatelessWidget {
                         colorData: _brightness.getFavColor[index]));
               },
             ),
+            const SizedBox(height: 40)
           ],
         ),
       ),
-    );
-  }
-}
-
-class CircularSlider extends StatelessWidget {
-  const CircularSlider({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final brightness = Provider.of<LightData>(context);
-    return SleekCircularSlider(
-      initialValue: brightness.getBulbBrightness,
-      onChange: (double bright) => brightness.setBulbBrightness(bright: bright),
-      min: 0,
-      max: 100,
-      appearance: CircularSliderAppearance(
-          size: MediaQuery.of(context).size.width * 0.7,
-          startAngle: 90,
-          angleRange: 260,
-          infoProperties: InfoProperties(
-              mainLabelStyle: TextStyle(
-                  fontFamily: GoogleFonts.roboto().fontFamily,
-                  fontSize: 42,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xff666666))),
-          customWidths: CustomSliderWidths(progressBarWidth: 20),
-          customColors: CustomSliderColors(
-              shadowColor: Colors.transparent,
-              hideShadow: true,
-              trackColor: const Color(0xffaAaAaA),
-              gradientStartAngle: 90,
-              gradientEndAngle: 360,
-              progressBarColors: [
-                const Color(0xff00FF00),
-                const Color(0xffFFFF00),
-                const Color(0xffFF0000),
-              ])),
     );
   }
 }
