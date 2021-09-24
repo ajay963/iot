@@ -14,7 +14,7 @@ class CustomRoudedButto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextTheme _txtTheme = Theme.of(context).textTheme;
-    final _color = Provider.of<LightData>(context);
+    // final _color = Provider.of<LightData>(context);
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       hoverColor: Colors.white.withOpacity(0.2),
@@ -25,7 +25,7 @@ class CustomRoudedButto extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(text, style: _txtTheme.bodyText1)),
         decoration: BoxDecoration(
-          color: _color.getColor1,
+          color: Colors.black,
           borderRadius: BorderRadius.circular(30),
         ),
       ),

@@ -14,13 +14,16 @@ class ColorBox extends StatelessWidget {
     // final Size screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(100),
       splashColor: Colors.white.withOpacity(0.5),
       child: Ink(
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            color: colorCode, borderRadius: BorderRadius.circular(30)),
+          shape: BoxShape.circle,
+          color: colorCode,
+          // borderRadius: BorderRadius.circular(30)
+        ),
       ),
     );
   }
@@ -44,13 +47,14 @@ class GradientBox extends StatelessWidget {
     // final Size screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(100),
       splashColor: Colors.white.withOpacity(0.5),
       child: Ink(
         height: 70,
         width: 70,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40),
+            shape: BoxShape.circle,
+            // borderRadius: BorderRadius.circular(40),
             gradient: RadialGradient(
                 colors: [color1, color2],
                 radius: 1,
