@@ -52,6 +52,7 @@ class HomeScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Themeing.appTheme,
+      darkTheme: Themeing.appDarkTheme,
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
