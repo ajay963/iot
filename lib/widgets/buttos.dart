@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iot/provider/light_data.dart';
-import 'package:provider/provider.dart';
 
 class CustomRoudedButto extends StatelessWidget {
   final String text;
