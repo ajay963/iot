@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-const Color kTxtWhite = Color(0xffFeFeFe);
-const Color kMdGrey = Color(0xff666666);
-const Color kLtGrey = Color(0xffAAAAAA);
-const Color kDarkBlack = Color(0xff1b1b1b);
+import 'package:iot/colors.dart';
 
 class Themeing {
   static ThemeData appTheme = ThemeData(
