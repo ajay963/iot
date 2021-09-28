@@ -19,10 +19,10 @@ class BasicsPage extends StatelessWidget {
     final _brightness = Provider.of<LightData>(context);
     final TextTheme _txtTheme = Theme.of(context).textTheme;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +85,7 @@ class BasicsPage extends StatelessWidget {
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xffcccccc),
+                            color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(20),
                           ),
                         )
