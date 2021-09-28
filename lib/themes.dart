@@ -74,16 +74,20 @@ class Themeing {
               disabledThumbRadius: 15, enabledThumbRadius: 15)));
 
   static ThemeData appDarkTheme = ThemeData(
-      // brightness: Brightness.light,
-      // primaryColor: darkBlack,
-      // splashColor: Colors.white,
-      backgroundColor: Colors.black,
+      brightness: Brightness.dark,
+      // backgroundColor: kspaceBlack,
+      cardColor: kDarkBlack,
+      scaffoldBackgroundColor: kspaceBlack,
+      iconTheme: const IconThemeData(
+        size: 40,
+        color: kspaceBlack,
+      ),
       textTheme: TextTheme(
           headline1: TextStyle(
               fontFamily: GoogleFonts.roboto().fontFamily,
               fontSize: 24,
               fontWeight: FontWeight.w700,
-              color: kTxtWhite),
+              color: kMdGrey),
           headline2: TextStyle(
             fontFamily: GoogleFonts.roboto().fontFamily,
             fontSize: 24,
@@ -94,27 +98,27 @@ class Themeing {
             fontFamily: GoogleFonts.roboto().fontFamily,
             fontSize: 10,
             fontWeight: FontWeight.w700,
-            color: kTxtWhite,
+            color: kMdGrey,
           ),
           bodyText1: TextStyle(
             fontFamily: GoogleFonts.roboto().fontFamily,
             fontSize: 18,
             fontWeight: FontWeight.w400,
-            color: kLtGrey,
+            color: kMdGrey,
           ),
           bodyText2: TextStyle(
-            fontFamily: GoogleFonts.roboto().fontFamily,
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          )),
+              fontFamily: GoogleFonts.roboto().fontFamily,
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+              color: kMdGrey)),
       appBarTheme: AppBarTheme(
         titleTextStyle: GoogleFonts.roboto(
-            fontSize: 24,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 4,
-            color: kTxtWhite),
-        backgroundColor: const Color(0xffefefef),
+          fontSize: 24,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 4,
+          color: kMdGrey,
+        ),
+        backgroundColor: kspaceBlack,
         elevation: 0,
       ),
       tabBarTheme: TabBarTheme(
@@ -130,7 +134,7 @@ class Themeing {
           fontFamily: GoogleFonts.roboto().fontFamily,
           fontSize: 20,
           fontWeight: FontWeight.w700,
-          color: kMdGrey.withOpacity(0.5),
+          color: kLtGrey.withOpacity(0.5),
         ),
       ),
       sliderTheme: const SliderThemeData(

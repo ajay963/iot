@@ -6,7 +6,7 @@ import 'package:iot/provider/colors_list.dart';
 import 'package:iot/provider/gradients.dart';
 import 'package:iot/provider/light_data.dart';
 import 'package:iot/provider/network.dart';
-import 'package:iot/screens/advance_page.dart';
+import 'package:iot/provider/advance_page.dart';
 import 'package:iot/screens/basic_screen.dart';
 import 'package:iot/screens/settings.dart';
 import 'package:iot/themes.dart';
@@ -52,6 +52,7 @@ class HomeScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Themeing.appTheme,
       darkTheme: Themeing.appDarkTheme,
+      themeMode: ThemeMode.dark,
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -59,34 +60,22 @@ class HomeScreen extends StatelessWidget {
               title: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
                 // const SizedBox(width: 20),
                 Text(
                   'IOT',
-                  style: _txtThenme.headline3,
                 )
               ])),
           body: SafeArea(
-            child: Stack(
-              children: [
-                Ink(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffefefef),
-                    // borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
+            child:
                 TabBarView(physics: const BouncingScrollPhysics(), children: [
-                  const BasicsPage(),
-                  const AdvancePage(),
-                  SettingPage(
-                    hasInternet: hasInternet,
-                    connectivityResult: connectivityResult,
-                  )
-                ]),
-              ],
-            ),
+              const BasicsPage(),
+              const AdvancePage(),
+              SettingPage(
+                hasInternet: hasInternet,
+                connectivityResult: connectivityResult,
+              )
+            ]),
           ),
         ),
       ),
