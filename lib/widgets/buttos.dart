@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iot/provider/light_data.dart';
-import 'package:provider/provider.dart';
 
 class CustomRoudedButto extends StatelessWidget {
   final String text;
@@ -25,7 +23,7 @@ class CustomRoudedButto extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(text, style: _txtTheme.bodyText1)),
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: Theme.of(context).textButtonTheme.style.backgroundColor,
           borderRadius: BorderRadius.circular(30),
         ),
       ),

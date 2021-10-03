@@ -75,40 +75,34 @@ class NoNetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: Center(
-          child: Directionality(
-        textDirection: TextDirection.ltr,
+    return Center(
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 60),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(FontAwesomeIcons.mixcloud,
-                    size: 60, color: Colors.red.shade400),
-                // const SizedBox(height: 200),
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: 'No Internet Connection\n\n',
-                      style: TextStyle(
-                        fontFamily: _txtTheme.headline2!.fontFamily,
-                        fontSize: 36,
-                        color: Colors.grey,
-                      )),
-                  TextSpan(
-                      text:
-                          'go to detttings ->network ->data check for internet connection',
-                      style: _txtTheme.bodyText1),
-                ])),
-              ],
-            ),
-          ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 60),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(FontAwesomeIcons.mixcloud,
+                size: 60, color: Colors.red.shade400),
+            // const SizedBox(height: 200),
+            RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                  text: 'No Internet Connection\n\n',
+                  style: TextStyle(
+                    fontFamily: _txtTheme.headline2!.fontFamily,
+                    fontSize: 36,
+                    color: Colors.grey,
+                  )),
+              TextSpan(
+                  text:
+                      'go to detttings ->network ->data check for internet connection',
+                  style: _txtTheme.bodyText1),
+            ])),
+          ],
         ),
-      )),
-    );
+      ),
+    ));
   }
 }
