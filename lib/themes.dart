@@ -4,11 +4,14 @@ import 'package:iot/colors.dart';
 
 class Themeing {
   static ThemeData appTheme = ThemeData(
-      // brightness: Brightness.light,
-      // primaryColor: darkBlack,
-      // splashColor: Colors.white,
-      backgroundColor: Colors.grey.shade100,
-      cardColor: Colors.black,
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: kJustWhite,
+      cardColor: kLtGrey,
+      iconTheme: const IconThemeData(color: kJustWhite, size: 24),
+      textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(kspaceBlack),
+      )),
       textTheme: TextTheme(
           headline1: TextStyle(
               fontFamily: GoogleFonts.roboto().fontFamily,

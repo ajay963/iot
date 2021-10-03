@@ -31,7 +31,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<GradientDatalist>(
             create: (context) => GradientDatalist())
       ],
-      child: const InternetChecker(),
+      child: MaterialApp(
+          theme: Themeing.appTheme,
+          darkTheme: Themeing.appDarkTheme,
+          debugShowCheckedModeBanner: false,
+          home: const InternetChecker()),
     );
   }
 }
@@ -47,36 +51,28 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme _txtThenme = Theme.of(context).textTheme;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: Themeing.appTheme,
-      darkTheme: Themeing.appDarkTheme,
-      themeMode: ThemeMode.dark,
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-              title: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                // const SizedBox(width: 20),
-                Text(
-                  'IOT',
-                )
-              ])),
-          body: SafeArea(
-            child:
-                TabBarView(physics: const BouncingScrollPhysics(), children: [
-              const BasicsPage(),
-              const AdvancePage(),
-              SettingPage(
-                hasInternet: hasInternet,
-                connectivityResult: connectivityResult,
-              )
-            ]),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+          title: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: const [
+            // const SizedBox(width: 20),
+            Text(
+              'IOT',
+            )
+          ])),
+      body: SafeArea(
+        child: DefaultTabController(
+          length: 3,
+          child: TabBarView(physics: const BouncingScrollPhysics(), children: [
+            const BasicsPage(),
+            const AdvancePage(),
+            SettingPage(
+              hasInternet: hasInternet,
+              connectivityResult: connectivityResult,
+            )
+          ]),
         ),
       ),
     );
