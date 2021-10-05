@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           theme: Themeing.appTheme,
           darkTheme: Themeing.appDarkTheme,
+          themeMode: ThemeMode.dark,
           debugShowCheckedModeBanner: false,
           home: const InternetChecker()),
     );
@@ -56,10 +57,11 @@ class HomeScreen extends StatelessWidget {
           title: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
+              children: [
             // const SizedBox(width: 20),
             Text(
               'IOT',
+              style: Theme.of(context).textTheme.headline1,
             )
           ])),
       body: SafeArea(
