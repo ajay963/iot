@@ -17,7 +17,7 @@ class Themeing {
               fontFamily: GoogleFonts.roboto().fontFamily,
               fontSize: 24,
               fontWeight: FontWeight.w700,
-              color: kTxtWhite),
+              color: kMdGrey),
           headline2: TextStyle(
             fontFamily: GoogleFonts.roboto().fontFamily,
             fontSize: 24,
@@ -34,7 +34,7 @@ class Themeing {
             fontFamily: GoogleFonts.roboto().fontFamily,
             fontSize: 18,
             fontWeight: FontWeight.w400,
-            color: kLtGrey,
+            color: kMdGrey,
           ),
           bodyText2: TextStyle(
             fontFamily: GoogleFonts.roboto().fontFamily,
