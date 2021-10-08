@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iot/screens/login.dart';
 import 'package:provider/provider.dart';
 import 'package:iot/provider/colors_list.dart';
 import 'package:iot/provider/gradients.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           darkTheme: Themeing.appDarkTheme,
           themeMode: ThemeMode.dark,
           debugShowCheckedModeBanner: false,
-          home: const InternetChecker()),
+          home: const LogInScreen()),
     );
   }
 }
