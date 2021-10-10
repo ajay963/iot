@@ -11,7 +11,6 @@ import 'package:iot/provider/advance_page.dart';
 import 'package:iot/screens/basic_screen.dart';
 import 'package:iot/screens/settings.dart';
 import 'package:iot/themes.dart';
-import 'package:iot/widgets/network_widget.dart';
 
 void main() {
   runApp(const MyApp());
