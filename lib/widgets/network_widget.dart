@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import 'package:iot/main.dart';
+import 'package:iot/screens/login.dart';
 import 'package:iot/themes.dart';
 
 class InternetChecker extends StatefulWidget {
@@ -61,9 +62,9 @@ class _InternetCheckerState extends State<InternetChecker> {
     // _networkData.setInternetStatus(_hasInernet);
     // _networkData.setNetworkType(_networkType);
     return (_hasInernet == true)
-        ? HomeScreen(
+        ? LogInScreen(
             hasInternet: _hasInernet,
-            connectivityResult: _networkType,
+            networkType: _networkType,
           )
         : NoNetScreen();
   }

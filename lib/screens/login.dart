@@ -1,9 +1,15 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iot/main.dart';
 import 'package:rive/rive.dart';
 
 class LogInScreen extends StatelessWidget {
-  const LogInScreen({Key? key}) : super(key: key);
+  final bool hasInternet;
+  final ConnectivityResult networkType;
+  const LogInScreen(
+      {Key? key, required this.hasInternet, required this.networkType})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +21,9 @@ class LogInScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.20),
+              const SizedBox(height: 20),
               Container(
                 height: MediaQuery.of(context).size.width,
                 width: MediaQuery.of(context).size.width,
@@ -30,7 +36,13 @@ class LogInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               InkWell(
-                onTap: () {},
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomeScreen(
+                              hasInternet: hasInternet,
+                              connectivityResult: networkType,
+                            ))),
                 borderRadius: BorderRadius.circular(10),
                 child: Ink(
                     child: Padding(
