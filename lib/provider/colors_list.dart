@@ -18,4 +18,9 @@ class ColorList extends ChangeNotifier {
     colorsList.add(colorCode);
     notifyListeners();
   }
+
+  void removeColor() {
+    colorsList.removeLast();
+    notifyListeners();
+  }
 }

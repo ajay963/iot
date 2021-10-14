@@ -1,7 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:iot/screens/login.dart';
 import 'package:iot/widgets/network_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:iot/provider/colors_list.dart';
