@@ -37,6 +37,7 @@ class LightData extends ChangeNotifier {
 
   void addRecentColor({required Color colorData}) {
     _recentColorsList.insert(0, colorData);
+    if (_recentColorsList.length > 40) _recentColorsList.removeLast();
     notifyListeners();
   }
 
