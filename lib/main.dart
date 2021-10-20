@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
         child: DefaultTabController(
           length: 3,
           child: TabBarView(physics: const BouncingScrollPhysics(), children: [
-            const BasicsPage(),
+            const BasicScreen(),
             const AdvancePage(),
             SettingPage(
               hasInternet: hasInternet,
