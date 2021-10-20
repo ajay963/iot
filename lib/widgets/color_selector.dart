@@ -1,3 +1,4 @@
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -92,19 +93,43 @@ class ColorSelector extends StatelessWidget {
           style: _txtTheme.headline2,
         ),
         Center(
-            child: CircleColorPicker(
-                // width: MediaQuery.of(context).size.width * 0.7,
-                initialColor: _brightness.getColor1,
-                thumbRadius: 20,
-                thumbColor: Theme.of(context).cardColor,
-                colorListener: (int value) {
-                  _brightness.addRecentColor(colorData: Color(value));
-
-                  _brightness.setColor1(colorData: Color(value));
-                  _brightness.setColor2(colorData: Color(value));
-                })),
+          child: ColorPicker(
+            wheelWidth: 20,
+            color: _brightness.getColor1,
+            onColorChanged: (colorValue) {
+              _brightness.setColor1(colorData: colorValue);
+              _brightness.setColor2(colorData: colorValue);
+            },
+            onColorChangeEnd: (colorValue) {
+              _brightness.addRecentColor(colorData: colorValue);
+            },
+            pickersEnabled: const <ColorPickerType, bool>{
+              ColorPickerType.accent: false,
+              ColorPickerType.primary: false,
+              ColorPickerType.wheel: true,
+            },
+            enableShadesSelection: false,
+          ),
+        ),
         const SizedBox(height: 20),
       ],
     );
   }
 }
+
+
+
+
+
+  //  Center(
+  //           child: CircleColorPicker(
+  //               // width: MediaQuery.of(context).size.width * 0.7,
+  //               initialColor: _brightness.getColor1,
+  //               thumbRadius: 20,
+  //               thumbColor: Theme.of(context).cardColor,
+  //               colorListener: (int value) {
+  //                 _brightness.addRecentColor(colorData: Color(value));
+
+  //                 _brightness.setColor1(colorData: Color(value));
+  //                 _brightness.setColor2(colorData: Color(value));
+  //               })),

@@ -52,18 +52,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-          title: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-            // const SizedBox(width: 20),
-            Text(
-              'IOT',
-              style: Theme.of(context).textTheme.headline1,
-            )
-          ])),
+      appBar: (_screenSize.width < 600)
+          ? AppBar(
+              title: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                  // const SizedBox(width: 20),
+                  Text(
+                    'IOT',
+                    style: Theme.of(context).textTheme.headline1,
+                  )
+                ]))
+          : null,
       body: SafeArea(
         child: DefaultTabController(
           length: 3,

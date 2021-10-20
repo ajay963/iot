@@ -31,8 +31,8 @@ class ColorLib extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: _screenSize.width * 0.04,
-                  crossAxisSpacing: _screenSize.width * 0.04,
+                  mainAxisSpacing: _screenSize.width * 0.02,
+                  crossAxisSpacing: _screenSize.width * 0.02,
                   crossAxisCount: _resposive.rowCount(screenSize: _screenSize),
                 ),
                 itemCount: _brightness.getRecentColor.length,
