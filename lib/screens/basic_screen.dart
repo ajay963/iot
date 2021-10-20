@@ -120,23 +120,22 @@ class BasicsPage extends StatelessWidget {
   }
 }
 
+class BasicScreen extends StatelessWidget {
+  const BasicScreen({Key? key}) : super(key: key);
 
-
-// ColorPicker(
-//                 color: _brightness.getColor1,
-//                 onColorChanged: (Color color) {
-//                   _brightness.setColor1(colorData: color);
-//                   _brightness.setColor2(colorData: color);
-//                 },
-//                 onColorChangeEnd: (Color color) =>
-//                     _brightness.addRecentColor(colorData: color),
-//                 wheelDiameter: MediaQuery.of(context).size.width * 0.6,
-//                 wheelWidth: 30,
-//                 borderRadius: 10,
-//                 enableShadesSelection: false,
-//                 pickersEnabled: const <ColorPickerType, bool>{
-//                   ColorPickerType.wheel: true,
-//                   ColorPickerType.accent: false,
-//                   ColorPickerType.primary: false
-//                 },
-//               ),
+  @override
+  Widget build(BuildContext context) {
+    final Size _screenSize = MediaQuery.of(context).size;
+    return (_screenSize.width >= 600)
+        ? Column(
+            children: const [
+              Expanded(flex: 1, child: SizedBox()),
+              Expanded(
+                flex: 3,
+                child: SizedBox(),
+              )
+            ],
+          )
+        : Container();
+  }
+}
