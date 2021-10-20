@@ -11,14 +11,14 @@ class ColorBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final Size screenSize = MediaQuery.of(context).size;
+    final Size _screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(100),
       splashColor: Colors.white.withOpacity(0.5),
       child: Ink(
-        height: 50,
-        width: 50,
+        height: (_screenSize.width >= 600) ? 30 : 70,
+        width: (_screenSize.width >= 600) ? 30 : 70,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: colorCode,
@@ -44,14 +44,14 @@ class GradientBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final Size screenSize = MediaQuery.of(context).size;
+    final Size _screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(100),
       splashColor: Colors.white.withOpacity(0.5),
       child: Ink(
-        height: 70,
-        width: 70,
+        height: (_screenSize.width >= 600) ? 50 : 70,
+        width: (_screenSize.width >= 600) ? 50 : 70,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             // borderRadius: BorderRadius.circular(40),

@@ -2,9 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iot/colorwheel.dart';
+import 'package:iot/colors.dart';
+import 'package:iot/resposive.dart';
+import 'package:iot/widgets/colors_lib.dart';
+import 'package:iot/widgets/colorwheel.dart';
 import 'package:iot/provider/light_data.dart';
 import 'package:iot/widgets/buttos.dart';
+import 'package:iot/widgets/color_selector.dart';
 import 'package:provider/provider.dart';
 
 class BasicsPage extends StatelessWidget {
@@ -127,15 +131,34 @@ class BasicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size _screenSize = MediaQuery.of(context).size;
     return (_screenSize.width >= 600)
-        ? Column(
-            children: const [
-              Expanded(flex: 1, child: SizedBox()),
-              Expanded(
-                flex: 3,
-                child: SizedBox(),
-              )
-            ],
+        ? SizedBox(
+            height: _screenSize.height,
+            width: _screenSize.width,
+            child: Row(
+              children: [
+                Container(
+                    color: kDarkBlack,
+                    child: SizedBox(
+                        width: ResposiveSize()
+                            .rowSize(screenSize: _screenSize, isBig: true),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: ColorSelector(),
+                        ))),
+                SizedBox(
+                  width: ResposiveSize()
+                      .rowSize(screenSize: _screenSize, isBig: false),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: ColorLib(),
+                  ),
+                )
+              ],
+            ),
           )
-        : Container();
+        : SizedBox(
+            height: _screenSize.height,
+            width: _screenSize.width,
+            child: const ColorSelector());
   }
 }

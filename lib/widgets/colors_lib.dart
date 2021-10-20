@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:iot/provider/gradients.dart';
 import 'package:iot/provider/light_data.dart';
+import 'package:iot/resposive.dart';
 import 'package:iot/widgets/boxes.dart';
 import 'package:iot/widgets/buttos.dart';
 import 'package:provider/provider.dart';
 
-class ColorLibScreen extends StatelessWidget {
-  const ColorLibScreen({Key? key}) : super(key: key);
+class ColorLib extends StatelessWidget {
+  const ColorLib({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _gradientData = Provider.of<GradientDatalist>(context);
     final _brightness = Provider.of<LightData>(context);
     final TextTheme _txtTheme = Theme.of(context).textTheme;
+    final _screenSize = MediaQuery.of(context).size;
+    final _resposive = ResposiveSize();
     return SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Recent Colors', style: _txtTheme.headline2),
           const SizedBox(height: 20),
@@ -25,10 +30,10 @@ class ColorLibScreen extends StatelessWidget {
               GridView.builder(
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                  crossAxisCount: 5,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: _screenSize.width * 0.04,
+                  crossAxisSpacing: _screenSize.width * 0.04,
+                  crossAxisCount: _resposive.rowCount(screenSize: _screenSize),
                 ),
                 itemCount: _brightness.getRecentColor.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -51,8 +56,10 @@ class ColorLibScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 20, crossAxisSpacing: 20, crossAxisCount: 4),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: _screenSize.width * 0.02,
+                crossAxisSpacing: _screenSize.width * 0.02,
+                crossAxisCount: _resposive.rowCount(screenSize: _screenSize)),
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             itemCount: _gradientData.getGradinetData.length,
@@ -77,10 +84,10 @@ class ColorLibScreen extends StatelessWidget {
           const SizedBox(height: 20),
           GridView.builder(
             shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-              crossAxisCount: 5,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: _screenSize.width * 0.02,
+              crossAxisSpacing: _screenSize.width * 0.02,
+              crossAxisCount: _resposive.rowCount(screenSize: _screenSize),
             ),
             itemCount: _brightness.getFavColor.length,
             itemBuilder: (BuildContext context, int index) {
