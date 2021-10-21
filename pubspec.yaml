@@ -42,6 +42,7 @@ dependencies:
   sleek_circular_slider: ^2.0.1
   font_awesome_flutter: ^9.1.0
   rive: ^0.7.28
+  flutter_switch: ^0.3.2
 
   #conectivity
   connectivity_plus: ^1.1.0

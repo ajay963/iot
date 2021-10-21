@@ -13,6 +13,8 @@ class LightData extends ChangeNotifier {
   double get getBulbBrightness => _brightness;
   Color get getColor1 => _colorData1;
   Color get getColor2 => _colorData2;
+  Color get prevColor => _recentColorsList[1];
+
   String get getColorInString => _colorData1
       .toString()
       .replaceAll('Color(0xff', '#')

@@ -2,7 +2,6 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iot/widgets/colorwheel.dart';
 import 'package:iot/provider/light_data.dart';
 import 'package:iot/widgets/buttos.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +13,7 @@ class ColorSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final _brightness = Provider.of<LightData>(context);
     final TextTheme _txtTheme = Theme.of(context).textTheme;
+    // final _screenSize = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,9 +92,11 @@ class ColorSelector extends StatelessWidget {
           'Color Wheel',
           style: _txtTheme.headline2,
         ),
+        const SizedBox(height: 40),
         Center(
           child: ColorPicker(
             wheelWidth: 20,
+            width: 70,
             color: _brightness.getColor1,
             onColorChanged: (colorValue) {
               _brightness.setColor1(colorData: colorValue);
@@ -112,6 +114,14 @@ class ColorSelector extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   crossAxisAlignment: CrossAxisAlignment.center,
+        //   children: [
+        //     ColorBox(colorCode: _brightness.getColor1, onTap: () {}),
+        //     ColorBox(colorCode: _brightness.prevColor, onTap: () {}),
+        //   ],
+        // )
       ],
     );
   }
