@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iot/provider/light_data.dart';
-import 'package:iot/resposive.dart';
-import 'package:iot/widgets/boxes.dart';
 import 'package:iot/widgets/buttos.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +13,7 @@ class ColorSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final _brightness = Provider.of<LightData>(context);
     final TextTheme _txtTheme = Theme.of(context).textTheme;
-    final _screenSize = MediaQuery.of(context).size;
+    // final _screenSize = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
