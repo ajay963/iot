@@ -4,8 +4,8 @@ internet of things for various inter conectivity
 
 ## Getting Started
 
-<img scr="screenshots/Desktop/Desktop-ColorLibDK.jpg">
-<img scr="screenshots/Desktop/Desktop-ColorLibLT.jpg">
+<img scr="/screenshots/Desktop/Desktop-ColorLibDK.jpg">
+<img scr="/screenshots/Desktop/Desktop-ColorLibLT.jpg">
 
 A few resources to get you started if this is your first Flutter project:
 
