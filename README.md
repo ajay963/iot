@@ -11,17 +11,17 @@ lighting effects and Displaying Alphabets
 
 <b>Color Library Screen</b>
 
-<img src="screenshots/Desktop/Desktop-ColorLibDK.jpg" height=200>
-<img src="screenshots/Desktop/Desktop-ColorLibLT.jpg" height=200>
+<img src="screenshots/Desktop/Desktop-ColorLibDK.jpg" height=300>
+<img src="screenshots/Desktop/Desktop-ColorLibLT.jpg" height=300>
 
 <b>Main Control Pannel</b>
 
-<img src="screenshots/Desktop/Desktop-ControlPannelDK.jpg" height=200>
-<img src="screenshots/Desktop/Desktop-ControlPannelLT.jpg" height=200>
+<img src="screenshots/Desktop/Desktop-controlPannelDK.jpg" height=300>
+<img src="screenshots/Desktop/Desktop-controlPannelLT.jpg" height=300>
 
 <b>Matrix Mode</b>
 
-<img src="screenshots/Desktop/Desktop-MatrixDK.jpg" height=200>
-<img src="screenshots/Desktop/Desktop-MatrixLT.jpg" height=200>
+<img src="screenshots/Desktop/Desktop-MatrixDK.jpg" height=300>
+<img src="screenshots/Desktop/Desktop-MatrixLT.jpg" height=300>
 
 
