@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iot/colors.dart';
 import 'package:iot/resposive.dart';
 import 'package:iot/screens/control_pannel.dart';
-import 'package:iot/widgets/colors_lib.dart';
 import 'package:iot/widgets/colorwheel.dart';
 import 'package:iot/provider/light_data.dart';
 import 'package:iot/widgets/buttos.dart';
