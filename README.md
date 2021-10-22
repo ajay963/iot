@@ -1,10 +1,11 @@
 # iot
 
-internet of things for vqrious inter conectivity
+internet of things for various inter conectivity
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+https://github.com/ajay963/iot/blob/main/screenshots/Desktop/Desktop%20-%20ColorLibDK.jpg
+https://github.com/ajay963/iot/blob/main/screenshots/Desktop/Desktop%20-%20ColorLibLT.jpg
 
 A few resources to get you started if this is your first Flutter project:
 
