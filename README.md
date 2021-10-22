@@ -11,8 +11,8 @@ lighting effects and Displaying Alphabets
 
 <b>Color Library Screen</b>
 
-<img src="screenshots/Desktop/Desktop-ColorLibDK.jpg" height=300>
-<img src="screenshots/Desktop/Desktop-ColorLibLT.jpg" height=300>
+<img src="screenshots/Desktop/Desktop-ColorLibDK.jpg" height=300> <img src="screenshots/Desktop/Desktop-ColorLibLT.jpg" height=300>
+
 
 <b>Main Control Pannel</b>
 
