@@ -50,7 +50,6 @@ class _ItemSelectorState extends State<ItemSelector> {
     return SizedBox(
       child: ListView.separated(
         shrinkWrap: true,
-        padding: const EdgeInsets.symmetric(vertical: 0),
         itemCount: widget.items.length,
         itemBuilder: (BuildContext context, int index) {
           return ItemsBox(
@@ -58,11 +57,12 @@ class _ItemSelectorState extends State<ItemSelector> {
               boxState: (selectedItem == index) ? true : false,
               ontap: () {
                 setState(() {
+                  isSelected = (selectedItem == index) ? true : false;
                   selectedItem = index;
-                  isSelected = (isSelected) ? false : true;
+
                   if (selectedItem == index && isSelected == true) {
                     selectedItem = -1;
-                    isSelected = (isSelected) ? false : true;
+                    isSelected = false;
                   }
                   widget.onChanged(index);
                 });
@@ -97,9 +97,9 @@ class ItemsBox extends StatelessWidget {
       onTap: ontap,
       child: Ink(
         height: 40,
-        width: _screenSize.width * 0.3,
+        width: _screenSize.width * 0.2,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: Text(
             itemName,
             style: _txtTheme.headline2,
