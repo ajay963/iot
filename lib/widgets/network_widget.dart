@@ -60,10 +60,10 @@ class _InternetCheckerState extends State<InternetChecker> {
     // _networkData.setInternetStatus(_hasInernet);
     // _networkData.setNetworkType(_networkType);
     return (_hasInernet == true)
-        ? LogInScreen(
-            hasInternet: _hasInernet,
-            networkType: _networkType,
-          )
+        ? const LogInScreen(
+            // hasInternet: _hasInernet,
+            // networkType: _networkType,
+            )
         : NoNetScreen();
   }
 }

@@ -136,31 +136,23 @@ class BasicScreen extends StatelessWidget {
             width: _screenSize.width,
             child: Row(
               children: [
-                Container(
-                  width: 50,
-                  height: _screenSize.height,
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [Colors.purple, Colors.pink],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter)),
-                ),
+                //color Slector and current color status -- smaller screen
                 Container(
                     color: kDarkBlack,
                     child: SizedBox(
                         width: ResposiveSize()
-                                .rowSize(screenSize: _screenSize, isBig: true) -
-                            50,
+                            .rowSize(screenSize: _screenSize, isBig: false),
                         child: const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: ColorSelector(),
                         ))),
                 SizedBox(
+                  //recent color , gradients and fav colors
                   width: ResposiveSize()
-                      .rowSize(screenSize: _screenSize, isBig: false),
+                      .rowSize(screenSize: _screenSize, isBig: true),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: ControlPannelScreen(),
+                    child: AnimationLab(),
                   ),
                 )
               ],

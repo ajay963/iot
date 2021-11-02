@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 
 class ResposiveSize {
   double rowSize({required Size screenSize, required bool isBig}) {
-    double bigRatio = (screenSize.width <= 900) ? 0.45 : 0.35;
-    double lowerRatio = 1 - bigRatio;
+    double lowerRatio = (screenSize.width <= 900) ? 0.45 : 0.35;
+    double bigRatio = 1 - lowerRatio;
 
     return (isBig == true)
         ? bigRatio * screenSize.width

@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iot/main.dart';
 import 'package:iot/resposive.dart';
-import 'package:rive/rive.dart';
+import 'package:rive/rive.dart' as rive;
 
-class LogInScreen extends StatelessWidget {
+class LogInNarrow extends StatelessWidget {
   final bool hasInternet;
   final ConnectivityResult networkType;
-  const LogInScreen(
+  const LogInNarrow(
       {Key? key, required this.hasInternet, required this.networkType})
       : super(key: key);
 
@@ -30,7 +30,7 @@ class LogInScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: RiveAnimation.asset(
+                  child: rive.RiveAnimation.asset(
                     'assets/tree.riv',
                     fit: BoxFit.cover,
                     animations: ['glow'],
@@ -68,8 +68,8 @@ class LogInScreen extends StatelessWidget {
   }
 }
 
-class LogInWideScreen extends StatelessWidget {
-  const LogInWideScreen({Key? key}) : super(key: key);
+class LogInScreen extends StatelessWidget {
+  const LogInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +81,14 @@ class LogInWideScreen extends StatelessWidget {
           width: ResposiveSize().rowSize(screenSize: _screenSize, isBig: true),
           child: const Padding(
             padding: EdgeInsets.all(8.0),
-            child: RiveAnimation.asset(
+            child: rive.RiveAnimation.asset(
               'assets/tree.riv',
-              fit: BoxFit.cover,
+              fit: BoxFit.fitHeight,
               animations: ['glow'],
             ),
           ),
         ),
-        SizedBox(
+        Container(
           width: ResposiveSize().rowSize(screenSize: _screenSize, isBig: false),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,6 +97,12 @@ class LogInWideScreen extends StatelessWidget {
               Text('', style: _txtTheme.headline2),
               const SizedBox(height: 60),
             ],
+          ),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xff333333), Color(0xff1b1b1b)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomLeft),
           ),
         )
       ],
