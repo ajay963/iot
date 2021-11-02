@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:iot/colors.dart';
 
-class ControlPannelScreen extends StatefulWidget {
-  const ControlPannelScreen({Key? key}) : super(key: key);
+class AnimationLab extends StatefulWidget {
+  const AnimationLab({Key? key}) : super(key: key);
 
   @override
-  State<ControlPannelScreen> createState() => _ControlPannelScreenState();
+  State<AnimationLab> createState() => _AnimationLab();
 }
 
-class _ControlPannelScreenState extends State<ControlPannelScreen> {
+class _AnimationLab extends State<AnimationLab> {
   String randTxt = 'some';
   @override
   Widget build(BuildContext context) {
