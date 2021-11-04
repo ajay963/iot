@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iot/main.dart';
 import 'package:iot/resposive.dart';
+import 'package:iot/screens/basic_screen.dart';
+import 'package:iot/widgets/buttos.dart';
 import 'package:rive/rive.dart' as rive;
 
 class LogInNarrow extends StatelessWidget {
@@ -75,37 +77,48 @@ class LogInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
     final _txtTheme = Theme.of(context).textTheme;
-    return Row(
-      children: [
-        SizedBox(
-          width: ResposiveSize().rowSize(screenSize: _screenSize, isBig: true),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: rive.RiveAnimation.asset(
-              'assets/tree.riv',
-              fit: BoxFit.fitHeight,
-              animations: ['glow'],
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Row(
+        children: [
+          SizedBox(
+            width:
+                ResposiveSize().rowSize(screenSize: _screenSize, isBig: true),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: rive.RiveAnimation.asset(
+                'assets/tree.riv',
+                fit: BoxFit.fitHeight,
+                animations: ['glow'],
+              ),
             ),
           ),
-        ),
-        Container(
-          width: ResposiveSize().rowSize(screenSize: _screenSize, isBig: false),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text('Welcomne', style: _txtTheme.headline1),
-              Text('', style: _txtTheme.headline2),
-              const SizedBox(height: 60),
-            ],
+          Container(
+            width:
+                ResposiveSize().rowSize(screenSize: _screenSize, isBig: false),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('Welcomne', style: _txtTheme.headline1),
+                Text('', style: _txtTheme.headline2),
+                const SizedBox(height: 60),
+                GradientButton(
+                    itemLabel: 'Log IN',
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BasicScreen())))
+              ],
+            ),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Color(0xff333333), Color(0xff1b1b1b)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomLeft),
+            ),
           ),
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Color(0xff333333), Color(0xff1b1b1b)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomLeft),
-          ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iot/colors.dart';
 import 'package:iot/resposive.dart';
-import 'package:iot/screens/control_pannel.dart';
+import 'package:iot/widgets/colors_lib.dart';
 import 'package:iot/widgets/colorwheel.dart';
 import 'package:iot/provider/light_data.dart';
 import 'package:iot/widgets/buttos.dart';
@@ -140,6 +141,7 @@ class BasicScreen extends StatelessWidget {
                 Container(
                     color: kDarkBlack,
                     child: SizedBox(
+                        height: _screenSize.height,
                         width: ResposiveSize()
                             .rowSize(screenSize: _screenSize, isBig: false),
                         child: const Padding(
@@ -148,11 +150,13 @@ class BasicScreen extends StatelessWidget {
                         ))),
                 SizedBox(
                   //recent color , gradients and fav colors
+                  height: _screenSize.height,
                   width: ResposiveSize()
                       .rowSize(screenSize: _screenSize, isBig: true),
+
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: AnimationLab(),
+                    child: ColorLib(),
                   ),
                 )
               ],
